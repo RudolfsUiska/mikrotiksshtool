@@ -72,6 +72,7 @@
                                 <th>Username</th>
                                 <th>Ping status</th>
                                 <th>Last reached</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -85,7 +86,8 @@
                                 <td>192.168.8.150</td>
                                 <td>admin</td>
                                 <td>Reached</td>
-                                <td>12.03.2020 22:12:00</td>
+                                <td>Reached</td>
+
                             </tr>
                             <tr>
                                 <td class="collapsing">
@@ -97,7 +99,8 @@
                                 <td>192.168.8.150</td>
                                 <td>admin</td>
                                 <td>Reached</td>
-                                <td>12.03.2020 22:12:32</td> 
+                                <td>Reached</td>
+
                             </tr>
                         </tbody>
                         <tfoot class="full-width">
@@ -132,17 +135,24 @@
             </div>
         </div>
     </div>
-<script>
+<script>                                               
     function Refresh_table(){
-    push=generate_table();
-    document.getElementById("routertable").innerHTML = push;
-    }                                                         
-    function generate_table(){
-        tablestring="<thead class=\"full-width\"><tr><th></th><th>IP</th><th>Username</th><th>Ping status</th></tr></thead><tbody>";
+        while(true){
+        ip="10.11.111.11"
+        admin="XD Sejiņa"
+        Reached="01.01.1970"
+        Status="xdd"
+        tablestring="<thead class=\"full-width\"><tr><th></th><th>IP</th><th>Username</th><th>Ping status</th><th>Last reached</th></tr></thead><tbody>";
+        for(i=0;i<5;i++){
+        tablestring+="<tr><td class=\"collapsing\"><div class=\"ui fitted slider checkbox\"><input type=\"checkbox\"><label></label></div></td>"
+        tablestring+="<td>"+ip+"</td><td>"+admin+"</td><td>"+Status+"</td>"+"<td>"+Reached+"</td>";    
+        tablestring+="</tr>"
+        }
         tablestring+=""; //mainloop
-
         tablestring+="</tbody><tfoot class=\"full-width\"><tr><th></th><th colspan=\"4\"><div class=\"ui right floated small primary labeled icon button\"><i class=\"computer icon\" onclick=\"first\"></i> Add device</div><div class=\"ui small  button\"> Delete device</div></th</tr> </tfoot>";
-        return tablestring;
+        document.getElementById("routertable").innerHTML = tablestring;
+        break;  
+        }
     }
                             
 </script>
