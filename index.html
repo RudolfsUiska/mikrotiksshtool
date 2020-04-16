@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+
+<body>
+
+    <div class="ui equal width grid">
+        <div class="column">
+            <div>
+
+            </div>
+        </div>
+
+        <div class="eight wide column">
+            <div class="ui segment">
+                    <h2 class="ui header">
+                            <i class="settings icon"></i>
+                            <div class="content">
+                              Mikrotik SSH Tool
+                              <div class="sub header">Manage your mikrotik devices</div>
+                            </div>
+                          </h2>
+
+
+                <div class="ui top attached tabular menu">
+                    <a class="item active" data-tab="first">Add device</a>
+                    <a class="item" data-tab="second">Device list</a>
+                    <a class="item" data-tab="third">Commands</a>
+                </div>
+                <div class="ui bottom attached tab segment active" data-tab="first">
+                    <form class="ui form" action="/submit-router" method="post">
+                        <div class="field">
+                            <label> IP:</label>
+                            <input type="text" name="IP" placeholder="Host IP">
+                        </div>
+                        <div class="field">
+                            <label> User:</label>
+                            <input type="text" name="User" placeholder="User name">
+                        </div>
+                        <div class="field">
+                            <label> Password: </label>
+                            <input type="text" name="Password" placeholder="Password">
+                        </div>
+                        <div class="field">
+                            <label> Port: </label>
+                            <input type="text" name="Port" placeholder="Port">
+                        </div>
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <input type="checkbox" tabindex="0" class="hidden">
+                                <label>Add IP address and credentials to list of devices</label>
+                            </div>
+                        </div>
+                        <button class="ui button" type="submit">Connect with SSH</button>
+                    </form>
+
+                </div>
+                <div class="ui bottom attached tab segment" data-tab="second">
+                    <table class="ui compact celled definition table">
+                        <thead class="full-width">
+                            <tr>
+                                <th></th>
+                                <th>IP</th>
+                                <th>Username</th>
+                                <th>Ping status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="collapsing">
+                                    <div class="ui fitted slider checkbox">
+                                        <input type="checkbox">
+                                        <label></label>
+                                    </div>
+                                </td>
+                                <td>192.168.8.150</td>
+                                <td>admin</td>
+                                <td>Reached</td>
+
+                            </tr>
+                            <tr>
+                                <td class="collapsing">
+                                    <div class="ui fitted slider checkbox">
+                                        <input type="checkbox">
+                                        <label></label>
+                                    </div>
+                                </td>
+                                <td>192.168.8.150</td>
+                                <td>admin</td>
+                                <td>Reached</td>
+
+                            </tr>
+                        </tbody>
+                        <tfoot class="full-width">
+                            <tr>
+                                <th></th>
+                                <th colspan="4">
+                                    <div class="ui right floated small primary labeled icon button">
+                                        <i class="computer icon" onclick="first"></i> Add device
+                                    </div>
+                                    <div class="ui small  button">
+                                        Delete device
+                                    </div>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="ui bottom attached tab segment" data-tab="third">
+                    <div class="ui warning ignored message">
+                        Commands will be applied without confirmation. Changes will be accepted on button press on all devices on list.
+                    </div>
+
+                    <button class="ui button">check-for-updates</button>
+                    <button class="ui button">reboot</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="column">
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myFunction() {
+            function generateTableHead(table) {
+                let thead = table.createTHead();
+            }
+        }
+        console.log(window.location.hostname)
+        $('.menu .item')
+            .tab()
+            ;
+    </script>
+</body>
+
+</html>
