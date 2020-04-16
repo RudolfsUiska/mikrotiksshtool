@@ -22,13 +22,13 @@
 
         <div class="eight wide column">
             <div class="ui segment">
-                    <h2 class="ui header">
-                            <i class="settings icon"></i>
-                            <div class="content">
-                              Mikrotik SSH Tool
-                              <div class="sub header">Manage your mikrotik devices</div>
-                            </div>
-                          </h2>
+                <h2 class="ui header">
+                    <i class="settings icon"></i>
+                    <div class="content">
+                        Mikrotik SSH Tool
+                        <div class="sub header">Manage your mikrotik devices</div>
+                    </div>
+                </h2>
 
 
                 <div class="ui top attached tabular menu">
@@ -37,6 +37,9 @@
                     <a class="item" data-tab="third">Commands</a>
                 </div>
                 <div class="ui bottom attached tab segment active" data-tab="first">
+                    <div class="ui warning ignored message">
+                        Mikrotik device will be added to device list with credentials
+                    </div>
                     <form class="ui form" action="/submit-router" method="post">
                         <div class="field">
                             <label> IP:</label>
@@ -55,12 +58,9 @@
                             <input type="text" name="Port" placeholder="Port">
                         </div>
                         <div class="field">
-                            <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" class="hidden">
-                                <label>Add IP address and credentials to list of devices</label>
-                            </div>
+
                         </div>
-                        <button class="ui button" type="submit">Connect with SSH</button>
+                        <button class="ui button" type="submit">Add to device list</button>
                     </form>
 
                 </div>
@@ -95,7 +95,7 @@
                                         <label></label>
                                     </div>
                                 </td>
-                                <td>192.168.8.150</td>
+                                <td>192.168.8.151</td>
                                 <td>admin</td>
                                 <td>Reached</td>
 
