@@ -11,6 +11,15 @@ app.get('/',function(req,res){
 app.get('/JSON',function(req,res){
    res.send(routerlist);
 });
+app.get('/semanticmin.js',function(req,res){
+   res.sendFile(__dirname+'/semantic.min.js');
+});
+app.get('/jquery.js',function(req,res){
+   res.sendFile(__dirname+'/jquery-3.1.1.min.js');
+});
+app.get('/semanticmin.css',function(req,res){
+   res.sendFile(__dirname+'/semantic.min.css');
+});
 app.post('/submit-router', function (req, res) {
 
    opush = {IP: req.body.IP,
