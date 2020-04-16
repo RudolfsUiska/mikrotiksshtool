@@ -22,13 +22,13 @@
 
         <div class="eight wide column">
             <div class="ui segment">
-                    <h2 class="ui header">
-                            <i class="settings icon"></i>
-                            <div class="content">
-                              Mikrotik SSH Tool
-                              <div class="sub header">Manage your mikrotik devices</div>
-                            </div>
-                          </h2>
+                <h2 class="ui header">
+                    <i class="settings icon"></i>
+                    <div class="content">
+                        Mikrotik SSH Tool
+                        <div class="sub header">Manage your mikrotik devices</div>
+                    </div>
+                </h2>
 
 
                 <div class="ui top attached tabular menu">
@@ -78,7 +78,7 @@
                             <tr>
                                 <td class="collapsing">
                                     <div class="ui fitted slider checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" class="chkdata">
                                         <label></label>
                                     </div>
                                 </td>
@@ -90,14 +90,26 @@
                             <tr>
                                 <td class="collapsing">
                                     <div class="ui fitted slider checkbox">
-                                        <input type="checkbox">
+                                        <input type="checkbox" class="chkdata">
                                         <label></label>
                                     </div>
                                 </td>
-                                <td>192.168.8.150</td>
+                                <td>192.168.8.151</td>
                                 <td>admin</td>
                                 <td>Reached</td>
-                                <td>12.03.2020 22:12:32</td> 
+                                <td>12.03.2020 22:12:32</td>
+                            </tr>
+                            <tr>
+                                <td class="collapsing">
+                                    <div class="ui fitted slider checkbox">
+                                        <input type="checkbox" class="chkdata">
+                                        <label></label>
+                                    </div>
+                                </td>
+                                <td>1.1.1.0</td>
+                                <td>admin</td>
+                                <td>Reached</td>
+                                <td>12.03.1998 22:12:32</td>
                             </tr>
                         </tbody>
                         <tfoot class="full-width">
@@ -107,7 +119,7 @@
                                     <div class="ui right floated small primary labeled icon button">
                                         <i class="computer icon" onclick="first"></i> Add device
                                     </div>
-                                    <div class="ui small  button">
+                                    <div class="ui small  button" onclick="deleterow()">
                                         Delete device
                                     </div>
                                 </th>
@@ -120,7 +132,7 @@
                         Commands will be applied without confirmation. Changes will be accepted on button press on all devices on list.
                     </div>
 
-                    <button class="ui button"onclick="Refresh_table()">check-for-updates</button>
+                    <button class="ui button" onclick="Refresh_table()">check-for-updates</button>
                     <button class="ui button">reboot</button>
                 </div>
 
@@ -132,21 +144,21 @@
             </div>
         </div>
     </div>
-<script>
-    function Refresh_table(){
-    push=generate_table();
-    document.getElementById("routertable").innerHTML = push;
-    }                                                         
-    function generate_table(){
-        tablestring="<thead class=\"full-width\"><tr><th></th><th>IP</th><th>Username</th><th>Ping status</th></tr></thead><tbody>";
-        tablestring+=""; //mainloop
+    <script>
+        function Refresh_table() {
+            push = generate_table();
+            document.getElementById("routertable").innerHTML = push;
+        }
+        function generate_table() {
+            tablestring = "<thead class=\"full-width\"><tr><th></th><th>IP</th><th>Username</th><th>Ping status</th></tr></thead><tbody>";
+            tablestring += ""; //mainloop
 
-        tablestring+="</tbody><tfoot class=\"full-width\"><tr><th></th><th colspan=\"4\"><div class=\"ui right floated small primary labeled icon button\"><i class=\"computer icon\" onclick=\"first\"></i> Add device</div><div class=\"ui small  button\"> Delete device</div></th</tr> </tfoot>";
-        return tablestring;
-    }
-                            
-</script>
-    
+            tablestring += "</tbody><tfoot class=\"full-width\"><tr><th></th><th colspan=\"4\"><div class=\"ui right floated small primary labeled icon button\"><i class=\"computer icon\" onclick=\"first\"></i> Add device</div><div class=\"ui small  button\"> Delete device</div></th</tr> </tfoot>";
+            return tablestring;
+        }
+
+    </script>
+
     <script>
         function myFunction() {
             function generateTableHead(table) {
@@ -157,6 +169,18 @@
         $('.menu .item')
             .tab()
             ;
+
+        function deleterow() {
+
+                    document.getElementById("routertable").deleteRow(2);
+
+  
+            
+
+
+
+
+        }
     </script>
 </body>
 
