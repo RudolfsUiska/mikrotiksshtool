@@ -137,6 +137,9 @@
     </div>
 <script>                                               
     function Refresh_table(){
+        //$.getJSON("/JSON", function(data)){
+            
+        //}
         while(true){
         ip="10.11.111.11"
         admin="XD Sejiņa"
@@ -144,7 +147,7 @@
         Status="xdd"
         tablestring="<thead class=\"full-width\"><tr><th></th><th>IP</th><th>Username</th><th>Ping status</th><th>Last reached</th></tr></thead><tbody>";
         for(i=0;i<5;i++){
-        tablestring+="<tr><td class=\"collapsing\"><div class=\"ui fitted slider checkbox\"><input type=\"checkbox\"><label></label></div></td>"
+        tablestring+="<tr id=\""+"rowid"+i+"\"><td class=\"collapsing\"><div class=\"ui fitted slider checkbox\"><input type=\"checkbox\"><label></label></div></td>"
         tablestring+="<td>"+ip+"</td><td>"+admin+"</td><td>"+Status+"</td>"+"<td>"+Reached+"</td>";    
         tablestring+="</tr>"
         }
