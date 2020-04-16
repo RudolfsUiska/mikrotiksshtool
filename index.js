@@ -3,22 +3,23 @@ var express=require('express');
 var app=express();
 var fs = require('fs');
 var bodyParser = require("body-parser");
+idcount = 0;
 app.use(bodyParser.urlencoded({ extended: false }))
 routerlist = [];
-app.get('/',function(req,res){
+app.get('/',function(req,res){                           // Main Index Hosts
    res.sendFile(__dirname +'/index.html');
 });
-app.get('/JSON',function(req,res){
+app.get('/JSON',function(req,res){                 // JSON Dump, fix
    res.send(routerlist);
 });
-app.get('/semanticmin.js',function(req,res){
+app.get('/semanticmin.js',function(req,res){          //js failu hostings 
    res.sendFile(__dirname+'/semantic.min.js');
 });
 app.get('/icons.svg',function(req,res){
    res.sendFile(__dirname+'/icons.svg');
 });
 app.get('/icons.eot',function(req,res){
-   res.sendFile(__dirname+'/icons.eot');
+   res.sendFile(__dirname+'/icons.eot');        //ikonu hostings
 });
 app.get('/icons.tff',function(req,res){
    res.sendFile(__dirname+'/icons.tff');
@@ -30,20 +31,24 @@ app.get('/icons.woff2',function(req,res){
    res.sendFile(__dirname+'/icons.woff2');
 });
 app.get('/jquery.js',function(req,res){
-   res.sendFile(__dirname+'/jquery-3.1.1.min.js');
+   res.sendFile(__dirname+'/jquery-3.1.1.min.js');                   //JQuery hostings
 });
 app.get('/semanticmin.css',function(req,res){
-   res.sendFile(__dirname+'/semantic.min.css');
+   res.sendFile(__dirname+'/semantic.min.css');                      //css hostings
 });
 app.post('/submit-router', function (req, res) {
 
    opush = {IP: req.body.IP,
       User: req.body.User,
       Password: req.body.Password,
-      Port: req.body.Port}; 
+      Port: req.body.Port,
+      hidden: req.body.checkbox,
+      id: idcount }; 
+   console.log(opush);
    test = testifAlive(opush); 
    console.log(test);
    routerlist.push(opush);
+   idcount++;
    res.sendFile(__dirname +'/index.html');
 
 });
