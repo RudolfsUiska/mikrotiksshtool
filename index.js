@@ -14,6 +14,21 @@ app.get('/JSON',function(req,res){
 app.get('/semanticmin.js',function(req,res){
    res.sendFile(__dirname+'/semantic.min.js');
 });
+app.get('/icons.svg',function(req,res){
+   res.sendFile(__dirname+'/icons.svg');
+});
+app.get('/icons.eot',function(req,res){
+   res.sendFile(__dirname+'/icons.eot');
+});
+app.get('/icons.tff',function(req,res){
+   res.sendFile(__dirname+'/icons.tff');
+});
+app.get('/icons.woff',function(req,res){
+   res.sendFile(__dirname+'/icons.woff');
+});
+app.get('/icons.woff2',function(req,res){
+   res.sendFile(__dirname+'/icons.woff2');
+});
 app.get('/jquery.js',function(req,res){
    res.sendFile(__dirname+'/jquery-3.1.1.min.js');
 });
