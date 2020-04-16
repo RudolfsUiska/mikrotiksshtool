@@ -22,13 +22,13 @@
 
         <div class="eight wide column">
             <div class="ui segment">
-                    <h2 class="ui header">
-                            <i class="settings icon"></i>
-                            <div class="content">
-                              Mikrotik SSH Tool
-                              <div class="sub header">Manage your mikrotik devices</div>
-                            </div>
-                          </h2>
+                <h2 class="ui header">
+                    <i class="settings icon"></i>
+                    <div class="content">
+                        Mikrotik SSH Tool
+                        <div class="sub header">Manage your mikrotik devices</div>
+                    </div>
+                </h2>
 
 
                 <div class="ui top attached tabular menu">
@@ -106,9 +106,9 @@
                         <tfoot class="full-width">
                             <tr>
                                 <th></th>
-                                <th colspan="4">
+                                <th colspan="4"onclick="Refresh_table()">
                                     <div class="ui right floated small primary labeled icon button">
-                                        <i class="computer icon" onclick="first"></i> Add device
+                                        <i class="computer icon" ></i> Add device
                                     </div>
                                     <div class="ui small  button">
                                         Delete device
@@ -120,10 +120,11 @@
                 </div>
                 <div class="ui bottom attached tab segment" data-tab="third">
                     <div class="ui warning ignored message">
-                        Commands will be applied without confirmation. Changes will be accepted on button press on all devices on list.
+                        Commands will be applied without confirmation. Changes will be accepted on button press on all
+                        devices on list.
                     </div>
 
-                    <button class="ui button"onclick="Refresh_table()">check-for-updates</button>
+                    <button class="ui button">check-for-updates</button>
                     <button class="ui button">reboot</button>
                 </div>
 
@@ -135,31 +136,35 @@
             </div>
         </div>
     </div>
-<script>                                               
-    function Refresh_table(){
-        //$.getJSON("/JSON", function(data)){
-            
-        //}
-        while(true){
-        ip="10.11.111.11"
-        admin="XD Sejiņa"
-        Reached="01.01.1970"
-        Status="xdd"
-        tablestring="<thead class=\"full-width\"><tr><th></th><th>IP</th><th>Username</th><th>Ping status</th><th>Last reached</th></tr></thead><tbody>";
-        for(i=0;i<5;i++){
-        tablestring+="<tr id=\""+"rowid"+i+"\"><td class=\"collapsing\"><div class=\"ui fitted slider checkbox\"><input type=\"checkbox\"><label></label></div></td>"
-        tablestring+="<td>"+ip+"</td><td>"+admin+"</td><td>"+Status+"</td>"+"<td>"+Reached+"</td>";    
-        tablestring+="</tr>"
+    <script>
+        function Refresh_table() {
+            //$.getJSON("/JSON", function(data)){
+
+            //}
+            data= [];
+            yeet=0;
+            var url = window.location.href;
+            var arr = url.split("/");
+            var result = arr[0] + "//" + arr[2];
+            $.getJSON(result + '/JSON').done(function (data) {
+                update_table(data);
+            })
+            function update_table(data){
+                tablestring = "<thead class=\"full-width\"><tr><th></th><th>IP</th><th>Username</th><th>Ping status</th><th>Last reached</th></tr></thead><tbody>";
+                for (i = 0; i < data.length; i++) {
+                    tablestring += "<tr id=\"" + "rowid" + data[i].id + "\"><td class=\"collapsing\"><div class=\"ui fitted slider checkbox\"><input type=\"checkbox\"><label></label></div></td>"
+                    tablestring += "<td>" + data[i].IP + "</td><td>" + data[i].User + "</td><td>" + data[i].hidden + "</td>" + "<td>" + data[i].Password + "</td>";
+                    tablestring += "</tr>"
+                }
+                tablestring += ""; //mainloop
+                tablestring += "</tbody><tfoot class=\"full-width\"><tr><th></th><th colspan=\"4\"><div class=\"ui right floated small primary labeled icon button\"><i class=\"computer icon\" onclick=\"first\"></i> Add device</div><div class=\"ui small  button\"> Delete device</div></th</tr> </tfoot>";
+                document.getElementById("routertable").innerHTML = tablestring;
+                
+            }
         }
-        tablestring+=""; //mainloop
-        tablestring+="</tbody><tfoot class=\"full-width\"><tr><th></th><th colspan=\"4\"><div class=\"ui right floated small primary labeled icon button\"><i class=\"computer icon\" onclick=\"first\"></i> Add device</div><div class=\"ui small  button\"> Delete device</div></th</tr> </tfoot>";
-        document.getElementById("routertable").innerHTML = tablestring;
-        break;  
-        }
-    }
-                            
-</script>
-    
+
+    </script>
+
     <script>
         function myFunction() {
             function generateTableHead(table) {
