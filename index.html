@@ -59,7 +59,15 @@
                         </div>
                         <div class="field">
                         </div>
-                        <button class="ui button" type="submit">Add to device list</button>
+                        <th colspan="2"> 
+                            <button type="submit" class="ui left floated small primary labeled icon button">
+                                <i  class="fax icon" ></i>Add this device
+                            </button>                                                           
+                            <div class="ui right small  button" onclick="location.href='/mass_add'">
+                                Mass add devices
+                            </div>
+
+                        </th>
                     </form>
 
                 </div>
@@ -79,7 +87,7 @@
                             <tr id=rowid0>
                                 <td class="collapsing">
                                     <div class="ui fitted slider checkbox">
-                                        <input type="checkbox" class="chkdata">
+                                        <input type="checkbox">
                                         <label></label>
                                     </div>
                                 </td>
@@ -92,37 +100,29 @@
                             <tr id=rowid1>
                                 <td class="collapsing">
                                     <div class="ui fitted slider checkbox">
-                                        <input type="checkbox" class="chkdata">
+                                        <input type="checkbox">
                                         <label></label>
                                     </div>
                                 </td>
-                                <td>192.168.8.151</td>
+                                <td>192.168.8.150</td>
                                 <td>admin</td>
                                 <td>Reached</td>
-                                <td>12.03.2020 22:12:32</td>
-                            </tr>
-                            <tr>
-                                <td class="collapsing">
-                                    <div class="ui fitted slider checkbox">
-                                        <input type="checkbox" class="chkdata">
-                                        <label></label>
-                                    </div>
-                                </td>
-                                <td>1.1.1.0</td>
-                                <td>admin</td>
                                 <td>Reached</td>
-                                <td>12.03.1998 22:12:32</td>
+
                             </tr>
                         </tbody>
                         <tfoot class="full-width">
                             <tr>
                                 <th></th>
-                                <th colspan="4"onclick="Refresh_table()">
-                                    <div class="ui right floated small primary labeled icon button">
-                                        <i class="computer icon" ></i> Add device
+                                <th colspan="4">                                                           
+                                    <div onclick="Refresh_table()" class="ui right floated small primary labeled icon button">
+                                        <i  class="computer icon" ></i> Refresh device list
                                     </div>
-                                    <div class="ui small  button" onclick="deleterow()">
+                                    <div class="ui small  button">
                                         Delete device
+                                    </div>
+                                    <div class="ui small  button">
+                                        Update device
                                     </div>
                                 </th>
                             </tr>
@@ -157,19 +157,19 @@
             var url = window.location.href;
             var arr = url.split("/");
             var result = arr[0] + "//" + arr[2];
-            $.getJSON(result + '/JSON').done(function (data) {
+            $.getJSON(result + '/JSON').done(function (data) {  // get data from address/JSON
                 update_table(data);
             })
-            function update_table(data){
+            function update_table(data){        //preamble for table
                 tablestring = "<thead class=\"full-width\"><tr><th></th><th>IP</th><th>Username</th><th>Ping status</th><th>Last reached</th></tr></thead><tbody>";
-                for (i = 0; i < data.length; i++) {
-                    tablestring += "<tr id=\"" + "rowid" + data[i].id + "\"><td class=\"collapsing\"><div class=\"ui fitted slider checkbox\"><input type=\"checkbox\"><label></label></div></td>"
+                for (i = 0; i < data.length; i++) {   //inserts elements with element id
+                    tablestring += "<tr id=\"" + "rowid" + data[i].uid + "\"><td class=\"collapsing\"><div class=\"ui fitted slider checkbox\"><input type=\"checkbox\"><label></label></div></td>"
                     tablestring += "<td>" + data[i].IP + "</td><td>" + data[i].User + "</td><td>" + data[i].hidden + "</td>" + "<td>" + data[i].Password + "</td>";
                     tablestring += "</tr>"
                 }
-                tablestring += ""; //mainloop
-                tablestring += "</tbody><tfoot class=\"full-width\"><tr><th></th><th colspan=\"4\"><div class=\"ui right floated small primary labeled icon button\"><i class=\"computer icon\" onclick=\"first\"></i> Add device</div><div class=\"ui small  button\"> Delete device</div></th</tr> </tfoot>";
-                document.getElementById("routertable").innerHTML = tablestring;
+                tablestring += ""; //add closer to table
+                tablestring += "</tbody><tfoot class=\"full-width\"><tr><th></th><th colspan=\"4\"><div class=\"ui right floated small primary labeled icon button\"><i class=\"computer icon\" onclick=\"first\"></i> Refresh device list</div><div class=\"ui small  button\"> Delete device</div><div class=\"ui small  button\">Update device</div></th</tr> </tfoot>";
+                document.getElementById("routertable").innerHTML = tablestring; //replace table
                 
             }
         }
@@ -186,18 +186,6 @@
         $('.menu .item')
             .tab()
             ;
-
-        function deleterow() {
-
-                    document.getElementById("routertable").deleteRow(2);
-
-  
-            
-
-
-
-
-        }
     </script>
 </body>
 
