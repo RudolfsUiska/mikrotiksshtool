@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/semanticmin.css">
+    <script src="/jquery.js"></script>
+    <script src="/semanticmin.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+
+<body>
+
+    <div class="ui equal width grid">
+        <div class="column">
+            <div>
+
+            </div>
+        </div>
+
+        <div class="eight wide column">
+            <div class="ui segment" >
+                <h2 class="ui header"  onclick="location.href='/'">
+                    <i class="settings icon"></i>
+                    <div class="content">
+                        Mikrotik SSH Tool
+                        <div class="sub header">Manage your mikrotik devices</div>
+                    </div>
+                </h2>
+                <div>
+
+                </div>
+                
+                <div class="ui top attached tabular menu">
+                    <a class="item active" data-tab="first">Mass add devices</a>
+                </div>
+                <div class="ui bottom attached tab segment active" data-tab="first">
+                    <div class="ui warning ignored message">
+                       These Mikrotik devices will be mass added to device list, use JSON array syntax for router adding, string names are IP, User, Password, Port.
+                    </div>
+                    <form class="ui form" action="/mass-submit-router" method="post">
+                        <div class="field">
+                            <label> DATA:</label>
+                            <input type="text" rows="20" cols="30" name="MassAddData" placeholder="[{Router 1 data heree},{Router 2 data here}]">
+                        </div>
+                        <th colspan="2"> 
+                            <button input type="submit" class="ui left floated small primary labeled icon button">
+                                <i  class="fax icon" ></i>Add these devices
+                            </button>                                                           
+                            <div class="ui right small  button" onclick="location.href='/'">
+                                Cancel
+                            </div>
+
+                        </th>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div>
+
+            </div>
+        </div>
+    </div>
+</body>
